@@ -1,5 +1,6 @@
 <template>
   <div class="form">
+    <h2>Bank Form</h2>
     <div>
       <label for="">Nombre</label>
       <input type="text" />
@@ -17,20 +18,15 @@
 
 <script>
 export default {
-  name: 'bankForm',
+  name: 'Form',
 };
 </script>
 
 <style>
 .form {
-  width: 96%;
-  height: fit-content;
-  background-color: #f8f8ff;
-  border-radius: 25px;
-  margin: 20px;
-}
-input {
-  background-color: #f8f8ff;
-  margin: 20px;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-top: 100px;
 }
 </style>

@@ -1,5 +1,9 @@
 <template>
-  <footer>esto es un footer</footer>
+  <footer class="footer">
+    <div class="container">
+      <p>Diseñado por Soraya Alonso</p>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -9,12 +13,10 @@ export default {
 </script>
 
 <style>
-footer {
-  width: 98%;
+.footer {
+  background-color: #0d1a34;
+  text-align: center;
   height: 100px;
-  background-color: #f8f8ff;
-  border: solid 2px #004aad;
-  border-radius: 25px;
-  margin-top: 20px;
+  color: white;
 }
 </style>

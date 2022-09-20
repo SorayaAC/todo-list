@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <bank-header />
     <bank-form />
     <bank-footer />
@@ -21,7 +21,10 @@ export default {
 };
 </script>
 <style>
-* {
-  background-color: #bdbdbd;
+.page {
+  max-width: 1600px;
+  min-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
