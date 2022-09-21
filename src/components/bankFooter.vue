@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <p>Diseñado por Soraya Alonso</p>
+      <p class="footer-text">Created by [Soraya Alonso&copy;]</p>
     </div>
   </footer>
 </template>
@@ -14,9 +14,14 @@ export default {
 
 <style>
 .footer {
-  background-color: #0d1a34;
+  font-family: 'Caveat', cursive;
+  background-color: #020a55;
   text-align: center;
   height: 100px;
   color: white;
+}
+.footer-text {
+  padding: 20px;
+  font-size: 20px;
 }
 </style>

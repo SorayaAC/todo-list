@@ -2,32 +2,13 @@
   <header class="header">
     <nav>
       <a href=""> <img src="../assets/img/header-logo.png" alt="" /></a>
-      <div class="nav-links">
-        <img
-          class="nav--close"
-          src="../assets/img/close.svg"
-          alt="Cerrar"
-          @click="close"
-        />
-        <img
-          class="nav--open"
-          src="../assets/img/menu.svg"
-          alt="Open"
-          @click="Open"
-        />
-        <ul>
-          <li><a href="#"></a> Cuentas</li>
-          <li><a href="#"></a> Tarjetas</li>
-          <li><a href="#"></a> Préstamos</li>
-          <li><a href="#"></a> Depósitos</li>
-        </ul>
-      </div>
     </nav>
     <div class="title">
-      <h1>Tu banco digital</h1>
+      <h1>Bank</h1>
       <p>
-        Consulta nuestra oferta de préstamos personales y créditos, tenemos la
-        financiación que necesitas.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus animi
+        labore cum veritatis ut omnis quae laborum quaerat, sed numquam dolore
+        commodi, totam dolores porro, nam repellendus temporibus earum ipsum?
       </p>
       <button>Solicita un préstamo</button>
     </div>
@@ -36,7 +17,7 @@
 
 <script>
 export default {
-  name: 'Header',
+  name: 'errorPage',
 };
 </script>
 
@@ -55,7 +36,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 2% 6%;
-  color: var(--font-gray-color);
+  color: white;
 }
 nav img {
   width: 300px;
@@ -69,13 +50,12 @@ nav img {
   padding: 8px 12px;
   position: relative;
   font-size: 20px;
-  cursor: pointer;
 }
 .nav-links ul li::after {
   content: '';
   width: 0%;
   height: 2px;
-  background-color: var(--gold);
+  background-color: #bb8a04;
   display: block;
   margin: auto;
   transition: 0.5s;
@@ -104,7 +84,7 @@ button {
   border: 1px solid var(--font-gray-color);
   padding: 12px 34px;
   background-color: transparent;
-  color: var(--gold);
+  color: var(--font-gray-color);
   outline: none;
   border-radius: 5px;
   cursor: pointer;
@@ -112,16 +92,11 @@ button {
   transition: 0.5s;
 }
 button:hover {
-  background-color: var(--font-gray-color);
-  border: 1px solid var(--gold);
+  background-color: #fff;
+  color: #f44336;
 }
-.nav--open {
-  display: none;
-}
-.nav--close {
-  display: none;
-}
-@media screen and (max-width: 850px) {
+
+@media screen and (max-width: 700px) {
   .nav-links ul li {
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
