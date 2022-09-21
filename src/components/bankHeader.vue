@@ -2,35 +2,7 @@
   <header class="header">
     <nav>
       <a href=""> <img src="../assets/img/header-logo.png" alt="" /></a>
-      <div class="nav-links">
-        <img
-          class="nav--close"
-          src="../assets/img/close.svg"
-          alt="Cerrar"
-          @click="close"
-        />
-        <img
-          class="nav--open"
-          src="../assets/img/menu.svg"
-          alt="Open"
-          @click="Open"
-        />
-        <ul>
-          <li><a href="#"></a> Cuentas</li>
-          <li><a href="#"></a> Tarjetas</li>
-          <li><a href="#"></a> Préstamos</li>
-          <li><a href="#"></a> Depósitos</li>
-        </ul>
-      </div>
     </nav>
-    <div class="title">
-      <h1>Tu banco digital</h1>
-      <p>
-        Consulta nuestra oferta de préstamos personales y créditos, tenemos la
-        financiación que necesitas.
-      </p>
-      <button>Solicita un préstamo</button>
-    </div>
   </header>
 </template>
 
@@ -42,9 +14,9 @@ export default {
 
 <style>
 .header {
-  min-height: 100vh;
+  height: 150px;
   width: 100%;
-  background-image: url('../assets/img/hero.png');
+  background-image: url('../assets/img/banner.png');
   background-size: cover;
   background-position: center;
   position: relative;

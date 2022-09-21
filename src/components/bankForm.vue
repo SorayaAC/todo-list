@@ -23,7 +23,7 @@
       <div class="form-column">
         <label for="last_name">Importe préstamo</label>
         <input type="text" id="last_name" name="last_name" placeholder="Doe" />
-        <label for="last_name">Fecha a conseguir</label>
+        <label for="last_name">Fecha a conseguir el préstamo</label>
         <input type="date" id="last_name" name="last_name" />
         <label for="talent">Tiempo a devolver</label>
         <input

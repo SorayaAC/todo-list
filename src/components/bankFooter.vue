@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <p class="footer-text">Created by [Soraya Alonso&copy;]</p>
+      <p class="footer-text">Soraya Alonso</p>
     </div>
   </footer>
 </template>
