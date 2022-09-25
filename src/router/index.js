@@ -1,16 +1,21 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import Home from '@/views/home.vue';
+
 import Form from '@/views/formPage.vue';
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home,
+    redirect: '/partner_test.html/:id',
   },
   {
-    path: '/partner_test.html',
+    path: '/partner_test.html/:id',
     name: 'form',
     component: Form,
+    props: (route) => {
+      const { id } = route.params;
+      return {
+        id: Number(id),
+      };
+    },
   },
 ];
 

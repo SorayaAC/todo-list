@@ -4,25 +4,20 @@
       <!-- user details column -->
       <div class="form-column">
         <label for="name">Nombre</label>
-        <input type="text" id="name" name="name" placeholder="Jonathan" />
+        <input type="text" id="name" name="name" disabled />
         <label for="surname">Apellidos</label>
-        <input type="text" id="surname" name="surname" placeholder="Doe" />
+        <input type="text" id="surname" name="surname" disabled />
         <label for="email">Email</label>
-        <input type="text" id="email" name="email" placeholder="jon@doe.com" />
+        <input type="text" id="email" name="email" disabled />
         <label for="phone">Teléfono</label>
-        <input
-          type="phone"
-          id="phone"
-          name="phone"
-          placeholder="+613 999 9999"
-        />
+        <input type="phone" id="phone" name="phone" />
         <label for="last_name">Edad</label>
-        <input type="text" id="last_name" name="last_name" placeholder="Doe" />
+        <input type="text" id="last_name" name="last_name" />
       </div>
       <!-- loan details column -->
       <div class="form-column">
         <label for="last_name">Importe préstamo</label>
-        <input type="text" id="last_name" name="last_name" placeholder="Doe" />
+        <input type="text" id="last_name" name="last_name" />
         <label for="last_name">Fecha a conseguir el préstamo</label>
         <input type="date" id="last_name" name="last_name" />
         <label for="talent">Tiempo a devolver</label>
