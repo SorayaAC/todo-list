@@ -2,25 +2,24 @@
   <div name="modal">
     <div class="modal-mask">
       <div class="modal-wrapper">
-        <!-- <user-not-found /> -->
-        <user-correct-data />
-        <!-- <user-error-data />  -->
+        <div class="modal-container">
+          <div class="modal-body">
+            <p class="modal-title">
+              El usuario {{ $route.params.id }} no existe, por favor introduce
+              otro usuario.
+            </p>
+          </div>
+
+          <div class="modal-footer"></div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import userNotFound from '../components/modalComponents/userNotFound.vue';
-import userCorrectData from '../components/modalComponents/userCorrectData.vue';
-import userErrorData from '../components/modalComponents/userErrorData.vue';
 export default {
-  name: 'requestModal',
-  components: {
-    userNotFound,
-    userCorrectData,
-    userErrorData,
-  },
+  name: 'userNotFound',
   created() {
     console.log('ver error:', this.$route.params);
   },
@@ -35,7 +34,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/img/hero.png');
+  background-image: url('../../assets/img/hero.png');
   display: table;
   transition: opacity 0.3s ease;
 }
@@ -48,7 +47,7 @@ export default {
 .landing {
   min-height: 100vh;
   width: 100%;
-  background-image: url('../assets/img/hero.png');
+  /* background-image: url('@/assets/img/hero.png'); */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -100,6 +99,55 @@ button:hover {
   }
   .title p {
     font-size: 1rem;
+  }
+}
+.modal-container {
+  width: 600px;
+  height: 300px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  padding-bottom: 40px;
+  background-color: #fff;
+  border: 3px solid var(--gold);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  transition: all 0.3s ease;
+}
+.modal-title {
+  width: 90%;
+  color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.modal-title p {
+  margin: 10px 0px 40px;
+  font-size: 14px;
+}
+@media screen and (max-width: 850px) {
+  .modal-container {
+    width: 290px;
+  }
+  .modal-title {
+    width: 40%;
+  }
+  .modal-title p {
+    font-size: 12rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .modal-container {
+    width: 150px;
+  }
+  .modal-title {
+    width: 50%;
+  }
+  .modal-title p {
+    font-size: 12rem;
   }
 }
 </style>

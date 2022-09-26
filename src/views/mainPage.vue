@@ -1,7 +1,7 @@
 <template>
   <main-header />
   <div class="form-content">
-    <form v-if="user" class="form">
+    <form v-if="user" class="form" @submit="postUser">
       <!-- user details column -->
       <div class="form-column">
         <label for="name">Nombre</label>
@@ -16,13 +16,7 @@
         <label for="email">Email</label>
         <input type="email" id="email" name="email" v-model="user.data.email" />
         <label for="phone">Teléfono</label>
-        <input
-          type="phone"
-          id="phone"
-          name="phone"
-          v-model="user.data.phone"
-          required
-        />
+        <input type="tel" id="phone" name="phone" v-model="user.data.phone" />
         <label for="age">Edad</label>
         <input
           type="number"
@@ -41,13 +35,19 @@
           type="number"
           id="loan_amount"
           name="loan_amount"
-          v-model="user.data.loan_amount"
+          v-model.number="user.data.loan_amount"
           min="11"
           max="1000"
           required
         />
         <label for="loan_date">Fecha solicitud</label>
-        <input type="date" id="loan_date" name="loan_date" :min="today()" />
+        <input
+          type="date"
+          id="loan_date"
+          name="loan_date"
+          :min="today()"
+          v-model="user.data.loan_date"
+        />
         <label for="loan_weeks">Duración</label>
         <select
           name="loan_weeks"
@@ -63,7 +63,13 @@
       </div>
 
       <div class="form-submit">
-        <input type="checkbox" id="terms" name="terms" required />
+        <input
+          type="checkbox"
+          id="terms"
+          name="terms"
+          v-model="user.data.check"
+          required
+        />
         <label for="terms" class="check-label">
           He leído y acepto los
           <a
@@ -74,26 +80,29 @@
           </a>
         </label>
 
-        <button @click="postUser">Enviar</button>
+        <input type="submit" value="Enviar" class="submit" />
       </div>
     </form>
   </div>
   <main-footer />
-  <request-modal v-if="showRequestModal" />
+  <user-not-found v-if="showUserNotFound" />
+  <user-error-data v-if="showUserErrorData" />
 </template>
 
 <script>
 import axios from 'axios';
 import mainHeader from '@/components/mainHeader.vue';
 import mainFooter from '@/components/mainFooter.vue';
-import RequestModal from '@/views/requestModal.vue';
+import userNotFound from '@/views/errorModalViews/userNotFound.vue';
+import userErrorData from '@/views/errorModalViews/userErrorData.vue';
 
 export default {
-  name: 'formPage',
+  name: 'mainPage',
   components: {
     mainHeader,
     mainFooter,
-    RequestModal,
+    userNotFound,
+    userErrorData,
   },
   props: {
     id: {
@@ -103,18 +112,10 @@ export default {
   },
   data() {
     return {
-      showRequestModal: false,
+      showUserNotFound: false,
+      showUserErrorData: false,
+      closeErrorModal: '',
       user: null,
-      // editedUser: {
-      //   id: this.id,
-      //   name: this.name,
-      //   surname: this.surname,
-      //   email: this.email,
-      //   phone: this.phone,
-      //   age: parseInt(this.age),
-      //   loan_amount: parseInt(this.loan_amount),
-      //   loan_weeks: parseInt(this.loan_weeks),
-      // },
     };
   },
   created() {
@@ -123,11 +124,17 @@ export default {
   },
   computed: {},
   methods: {
-    openRequestModal() {
-      this.showRequestModal = true;
+    openUserNotFound() {
+      this.showUserNotFound = true;
     },
-    closeRequestModal() {
-      this.showRequestModal = false;
+    closeUserNotFound() {
+      this.showUserNotFound = false;
+    },
+    openUserErrorData() {
+      this.showUserErrorData = true;
+    },
+    closeUserErrorData() {
+      this.showUserErrorData = false;
     },
     async getUsers() {
       try {
@@ -140,38 +147,44 @@ export default {
           }
         );
         this.user = response.data;
-        this.closeRequestModal();
-        console.log('todook', this.user);
+        this.closeUserNotFound();
       } catch (error) {
         if (error.response.status === 400) {
-          console.log('esto es error', error.response.data);
-          this.openRequestModal();
+          this.openUserNotFound();
         }
       }
     },
-
-    // async postUser() {
-    //   try {
-    //     console.log('heeeey');
-    //     const response = await axios.post(
-    //       `https://api7.cloudframework.io/recruitment/fullstack/users${this.id} `,
-    //       this.user.data,
-    //       {
-    //         headers: {
-    //           'X-WEB-KEY': 'Development',
-    //         },
-    //       }
-    //     );
-    //     console.log('todo ok', response);
-    //   } catch(error) {
-    //     console.log('esto es error', error.response.data);
-    //   }
-    // },
-
-    postUser() {
-      return console.log('holis');
+    async postUser(e) {
+      e.preventDefault();
+      const data = {
+        name: this.user.data.name,
+        surname: this.user.data.surname,
+        email: this.user.data.email,
+        phone: this.user.data.phone,
+        age: parseInt(this.user.data.age),
+        loan_amount: parseInt(this.user.data.loan_amount),
+        loan_date: this.user.data.loan_date,
+        loan_weeks: this.user.data.loan_weeks,
+        check: this.user.data.check,
+      };
+      try {
+        const response = await axios.post(
+          `https://api7.cloudframework.io/recruitment/fullstack/users/${this.id}`,
+          data,
+          {
+            headers: {
+              'X-WEB-KEY': 'Development',
+            },
+          }
+        );
+        this.user = response.data;
+        this.closeUserErrorData();
+      } catch (error) {
+        if (error.response.status === 400) {
+          console.log('esto es error post', error.response.data);
+        }
+      }
     },
-
     today() {
       const dtToday = new Date();
       let month = dtToday.getMonth() + 1;
