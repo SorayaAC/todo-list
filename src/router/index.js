@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 
-import Form from '@/views/formPage.vue';
+import mainPage from '@/views/mainPage.vue';
 const routes = [
   {
     path: '/',
@@ -8,8 +8,8 @@ const routes = [
   },
   {
     path: '/partner_test.html/:id',
-    name: 'form',
-    component: Form,
+    name: 'mainPage',
+    component: mainPage,
     props: (route) => {
       const { id } = route.params;
       return {

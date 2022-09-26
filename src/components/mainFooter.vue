@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <p class="footer-text">Soraya Alonso</p>
+      <p class="footer-text">Realizado por Soraya Alonso</p>
     </div>
   </footer>
 </template>
@@ -21,7 +21,7 @@ export default {
   color: white;
 }
 .footer-text {
-  padding: 20px;
+  padding: 30px;
   font-size: 20px;
 }
 </style>

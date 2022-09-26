@@ -2,45 +2,27 @@
   <div name="modal">
     <div class="modal-mask">
       <div class="modal-wrapper">
-        <div class="modal-container">
-          <div class="modal-body">
-            <slot name="body"> </slot>
-          </div>
-          usuario incorrecto elige otro
-          <div class="modal-footer">
-            <slot name="footer">
-              <button class="modal-default-button">OK</button>
-            </slot>
-          </div>
-        </div>
+        <!-- <user-not-found /> -->
+        <user-correct-data />
+        <!-- <user-error-data />  -->
       </div>
     </div>
   </div>
-
-  <!-- <header class="landing">
-    <nav>
-      <img src="../assets/img/header-logo.png" alt="CreditFast Bank Logo" />
-    </nav>
-    <div class="title">
-      <h1>Tu banco digital</h1>
-      <p>
-        Consulta nuestra oferta de préstamos personales y créditos, tenemos la
-        financiación que necesitas.
-      </p>
-    </div>
-  </header> -->
 </template>
 
 <script>
+import userNotFound from '../components/modalComponents/userNotFound.vue';
+import userCorrectData from '../components/modalComponents/userCorrectData.vue';
+import userErrorData from '../components/modalComponents/userErrorData.vue';
 export default {
   name: 'requestModal',
-
-  methods: {
-    //send request to father component
-    // closeRequestModal() {
-    //   console.log('close modal');
-    //   this.$emit('closeRequestModal');
-    // },
+  components: {
+    userNotFound,
+    userCorrectData,
+    userErrorData,
+  },
+  created() {
+    console.log('ver error:', this.$route.params);
   },
 };
 </script>
@@ -53,7 +35,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-image: url('../assets/img/hero.png');
   display: table;
   transition: opacity 0.3s ease;
 }
@@ -61,44 +43,6 @@ export default {
 .modal-wrapper {
   display: table-cell;
   vertical-align: middle;
-}
-
-.modal-container {
-  width: 300px;
-  margin: 0px auto;
-  padding: 20px 30px;
-  padding-bottom: 40px;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  transition: all 0.3s ease;
-}
-
-.modal-default-button {
-  float: right;
-}
-
-/*
- * The following styles are auto-applied to elements with
- * transition="modal" when their visibility is toggled
- * by Vue.js.
- *
- * You can easily play with the modal transition by editing
- * these styles.
- */
-
-.modal-enter {
-  opacity: 0;
-}
-
-.modal-leave-active {
-  opacity: 0;
-}
-
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
 }
 
 .landing {
