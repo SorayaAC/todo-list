@@ -164,7 +164,7 @@ export default {
         age: parseInt(this.user.data.age),
         loan_amount: parseInt(this.user.data.loan_amount),
         loan_date: this.user.data.loan_date,
-        loan_weeks: this.user.data.loan_weeks,
+        loan_weeks: this.user.data.loan_weeks.i,
         check: this.user.data.check,
       };
       try {
